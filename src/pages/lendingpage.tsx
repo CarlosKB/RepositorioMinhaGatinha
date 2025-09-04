@@ -7,6 +7,7 @@ import {
 import Swal from "sweetalert2";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import CelebrationIcon from '@mui/icons-material/Celebration';
 
 // Importando as imagens (ajuste se os nomes diferirem)
 import img1 from "../components/images/image1.jpg";
@@ -33,6 +34,14 @@ import img21 from "../components/images/image21.jpg";
 import img22 from "../components/images/image22.jpg";
 import img23 from "../components/images/image23.jpg";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+
+interface TimeLeft {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+}
 
 function LendingPage() {
   // Tema personalizado
@@ -49,6 +58,47 @@ function LendingPage() {
       fontFamily: ["Montserrat", "sans-serif"].join(","),
     },
   });
+
+  // Estado do contador
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+  const [isBirthday, setIsBirthday] = useState(false);
+
+  // Data do aniversário
+  const birthdayMonth = 8; // Setembro (JS usa 0-11)
+  const birthdayDay = 12;
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const now = new Date();
+      let year = now.getFullYear();
+      const birthday = new Date(year, birthdayMonth, birthdayDay, 0, 0, 0);
+
+      if (now > birthday) {
+        birthday.setFullYear(year + 1);
+      }
+
+      const diff = birthday.getTime() - now.getTime(); // <-- corrigido
+
+      const todayBirthday =
+        now.getDate() === birthdayDay && now.getMonth() === birthdayMonth;
+
+      setIsBirthday(todayBirthday);
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      setTimeLeft({ days, hours, minutes, seconds });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
 
   // Funções dos botões surpresa
   const handleClick = () => {
@@ -114,7 +164,7 @@ function LendingPage() {
               <li className="nav-item"><a className="nav-link" href="#inicio">Início</a></li>
               <li className="nav-item"><a className="nav-link" href="#fotos">Fotos</a></li>
               <li className="nav-item"><a className="nav-link" href="#surpresa">Surpresa</a></li>
-              <li className="nav-item"><Link className="nav-link" to="/aniversario">Aniversário 🎂</Link></li>
+              {isBirthday && (<li className="nav-item"><Link className="nav-link" to="/aniversario">Aniversário 🎂</Link></li>)}
             </ul>
           </div>
         </div>
@@ -123,7 +173,7 @@ function LendingPage() {
       {/* HERO */}
       <header
         id="inicio"
-        className="text-center text-white d-flex align-items-center justify-content-center"
+        className="text-center text-white d-flex align-items-center justify-content-center flex-column"
         style={{
           background: "linear-gradient(135deg, #6A0DAD, #D8BFD8)",
           minHeight: "90vh",
@@ -149,6 +199,89 @@ function LendingPage() {
           </Typography>
         </div>
       </header>
+      
+      {/* CONTADOR / ANIVERSÁRIO */}
+      <section
+        id="contador"
+        className="d-flex flex-column align-items-center justify-content-center text-center"
+        style={{
+          background: "linear-gradient(135deg, #6A0DAD, #D8BFD8)",
+          color: "white",
+          padding: "60px 20px",
+        }}
+      >
+        {!isBirthday ? (
+          <>
+            <Typography sx={{ fontSize: "1.5rem", fontWeight: "500", mb: 4 }}>
+              Faltam exatamente:
+            </Typography>
+            <div className="d-flex flex-wrap justify-content-center gap-3 mb-3">
+              {/* Dias */}
+              <div
+                style={{
+                  backgroundColor: "rgba(255,255,255,0.2)",
+                  padding: "20px 30px",
+                  borderRadius: "15px",
+                  minWidth: "80px",
+                }}
+              >
+                <Typography sx={{ fontSize: "2rem", fontWeight: "bold" }}>{timeLeft.days}</Typography>
+                <Typography>dias</Typography>
+              </div>
+
+              {/* Horas */}
+              <div
+                style={{
+                  backgroundColor: "rgba(255,255,255,0.2)",
+                  padding: "20px 30px",
+                  borderRadius: "15px",
+                  minWidth: "80px",
+                }}
+              >
+                <Typography sx={{ fontSize: "2rem", fontWeight: "bold" }}>{timeLeft.hours}</Typography>
+                <Typography>horas</Typography>
+              </div>
+
+              {/* Minutos */}
+              <div
+                style={{
+                  backgroundColor: "rgba(255,255,255,0.2)",
+                  padding: "20px 30px",
+                  borderRadius: "15px",
+                  minWidth: "80px",
+                }}
+              >
+                <Typography sx={{ fontSize: "2rem", fontWeight: "bold" }}>{timeLeft.minutes}</Typography>
+                <Typography>minutos</Typography>
+              </div>
+
+              {/* Segundos */}
+              <div
+                style={{
+                  backgroundColor: "rgba(255,255,255,0.2)",
+                  padding: "20px 30px",
+                  borderRadius: "15px",
+                  minWidth: "80px",
+                }}
+              >
+                <Typography sx={{ fontSize: "2rem", fontWeight: "bold" }}>{timeLeft.seconds}</Typography>
+                <Typography>segundos</Typography>
+              </div>
+            </div>
+            <Typography sx={{ fontSize: "1.2rem" }}>para o seu aniversário! 🎉</Typography>
+          </>
+        ) : (
+          <div className="d-flex flex-column align-items-center">
+            <CelebrationIcon sx={{ fontSize: 100, color: "#FFD700", mb: 2 }} />
+            <Typography sx={{ fontSize: "2.5rem", fontWeight: "bold", mb: 1 }}>
+              Feliz Aniversário, minha princesa! 💜🎂
+            </Typography>
+            <Typography sx={{ fontSize: "1.2rem" }}>
+              Que seu dia seja cheio de alegria, amor e momentos inesquecíveis!
+            </Typography>
+          </div>
+        )}
+      </section>
 
       {/* SOBRE NÓS */}
       <section id="sobre" className="py-5 bg-light text-center">
