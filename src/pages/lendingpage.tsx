@@ -6,6 +6,7 @@ import {
 } from "@mui/material";
 import Swal from "sweetalert2";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 // Importando as imagens (ajuste se os nomes diferirem)
 import img1 from "../components/images/image1.jpg";

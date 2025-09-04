@@ -1,24 +1,31 @@
-import { ThemeProvider, Typography, createTheme } from "@mui/material";
-import linda5 from "../components/images/image3.jpg";
-import linda6 from "../components/images/image4.jpg";
-import nois from "../components/images/image5.jpg";
+import React, { useEffect, useRef } from "react";
+import { ThemeProvider, Typography, createTheme, Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js"; // precisa do JS do bootstrap
+
+// Importe suas imagens (até 23)
+import img1 from "../components/images/image1.jpg";
+import img2 from "../components/images/image2.jpg";
+import img3 from "../components/images/image3.jpg";
+import img4 from "../components/images/image4.jpg";
+import img5 from "../components/images/image5.jpg";
+// ... continue até img23
 
 function BirthdayPage() {
-  // Tema personalizado
   const theme = createTheme({
     palette: {
-      primary: {
-        main: "#6A0DAD", // Roxo
-      },
-      secondary: {
-        main: "#D8BFD8", // Lilás
-      },
+      primary: { main: "#6A0DAD" }, // Roxo
+      secondary: { main: "#D8BFD8" }, // Lilás
     },
-    typography: {
-      fontFamily: ["Montserrat", "sans-serif"].join(","),
-    },
+    typography: { fontFamily: ["Montserrat", "sans-serif"].join(",") },
   });
+
+  const navigate = useNavigate();
+  const carouselRef = useRef(null);
+
+  // coloque todas as suas imagens neste array
+  const images = [img1, img2, img3, img4, img5];
 
   return (
     <ThemeProvider theme={theme}>
@@ -27,31 +34,28 @@ function BirthdayPage() {
         className="text-center text-white d-flex align-items-center justify-content-center"
         style={{
           background: "linear-gradient(135deg, #6A0DAD, #D8BFD8)",
-          minHeight: "80vh",
+          minHeight: "60vh",
+          padding: "40px 20px",
         }}
       >
-        <div>
-          <Typography
-            sx={{
-              fontSize: "clamp(2rem, 6vw, 3.5rem)",
-              fontWeight: "bold",
-              marginBottom: "20px",
-            }}
-          >
+        <div className="container">
+          <Typography sx={{ fontSize: "clamp(2rem, 6vw, 3.5rem)", fontWeight: "bold", mb: 2 }}>
             🎉 Feliz Aniversário, minha Princesa Isabela! 💜
           </Typography>
-          <Typography
-            sx={{
-              fontSize: "clamp(1rem, 3vw, 1.5rem)",
-              fontWeight: "500",
-            }}
-          >
-            Hoje celebramos a vida da mulher mais perfeita do universo!
+          <Typography sx={{ fontSize: "clamp(1rem, 3vw, 1.3rem)", maxWidth: 900, mx: "auto" }}>
+            Hoje celebramos você, que é o meu maior presente. Cada momento contigo é único
+            e merece ser lembrado para sempre. 💜✨
           </Typography>
+
+          <div className="mt-4">
+            <Button variant="contained" color="secondary" onClick={() => navigate(-1)}>
+              ⬅ Voltar
+            </Button>
+          </div>
         </div>
       </header>
 
-      {/* CARROSSEL DE FOTOS */}
+      {/* CARROSSEL */}
       <section className="py-5 bg-light">
         <div className="container">
           <Typography
@@ -59,49 +63,40 @@ function BirthdayPage() {
             sx={{
               fontSize: "2.2rem",
               fontWeight: "bold",
-              marginBottom: "30px",
               textAlign: "center",
+              mb: 4,
             }}
           >
-            Momentos especiais 💜
+            Nossos momentos especiais 💜
           </Typography>
 
-          <div id="carouselAniversario" className="carousel slide" data-bs-ride="carousel">
+          <div id="carouselAniversario" className="carousel slide shadow-lg rounded" ref={carouselRef}>
+            {/* Slides */}
             <div className="carousel-inner">
-              <div className="carousel-item active text-center">
-                <img
-                  src={linda5}
-                  className="d-block mx-auto img-fluid rounded shadow-lg"
-                  alt="Foto 1"
-                  style={{ maxHeight: "500px", objectFit: "cover" }}
-                />
-              </div>
-              <div className="carousel-item text-center">
-                <img
-                  src={linda6}
-                  className="d-block mx-auto img-fluid rounded shadow-lg"
-                  alt="Foto 2"
-                  style={{ maxHeight: "500px", objectFit: "cover" }}
-                />
-              </div>
-              <div className="carousel-item text-center">
-                <img
-                  src={nois}
-                  className="d-block mx-auto img-fluid rounded shadow-lg"
-                  alt="Foto 3"
-                  style={{ maxHeight: "500px", objectFit: "cover" }}
-                />
-              </div>
+              {images.map((src, i) => (
+                <div className={`carousel-item ${i === 0 ? "active" : ""}`} key={i}>
+                  <img
+                    src={src}
+                    alt={`Foto ${i + 1}`}
+                    className="d-block w-100"
+                    style={{
+                      maxHeight: "70vh",
+                      objectFit: "cover",
+                      borderRadius: "20px",
+                    }}
+                  />
+                </div>
+              ))}
             </div>
 
-            {/* Controles do carrossel */}
+            {/* Controles */}
             <button
               className="carousel-control-prev"
               type="button"
               data-bs-target="#carouselAniversario"
               data-bs-slide="prev"
             >
-              <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span className="carousel-control-prev-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
               <span className="visually-hidden">Anterior</span>
             </button>
             <button
@@ -110,7 +105,7 @@ function BirthdayPage() {
               data-bs-target="#carouselAniversario"
               data-bs-slide="next"
             >
-              <span className="carousel-control-next-icon" aria-hidden="true"></span>
+              <span className="carousel-control-next-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
               <span className="visually-hidden">Próximo</span>
             </button>
           </div>
@@ -123,15 +118,12 @@ function BirthdayPage() {
         style={{ background: "linear-gradient(135deg, #D8BFD8, #6A0DAD)" }}
       >
         <div className="container">
-          <Typography
-            sx={{ fontSize: "2rem", fontWeight: "bold", marginBottom: "15px" }}
-          >
-            💜 Isabela, minha princesa 💜
+          <Typography sx={{ fontSize: "2rem", fontWeight: "bold", mb: 2 }}>
+            💜 Isabela 💜
           </Typography>
-          <Typography sx={{ fontSize: "1.2rem", maxWidth: "700px", margin: "0 auto" }}>
-            Que seu aniversário seja apenas o começo de um ano incrível, cheio de amor, 
-            alegria e conquistas. Obrigado por ser a razão dos meus sorrisos todos os dias.  
-            Te amo infinitamente! 💜✨
+          <Typography sx={{ fontSize: "1.1rem", maxWidth: 800, mx: "auto" }}>
+            Que este novo ciclo seja cheio de alegria, paz, saúde e amor. Obrigado por ser
+            minha inspiração e por encher minha vida de luz. Te amo infinitamente! 💜
           </Typography>
         </div>
       </section>
