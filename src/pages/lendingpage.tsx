@@ -1,178 +1,238 @@
-import React from "react";
-import { ThemeProvider, Typography, createTheme, Button } from "@mui/material";
-import linda2 from "../components/images/linda3.jpeg";
-import linda3 from "../components/images/linda4.jpeg";
-import linda5 from "../components/images/linda5.jpeg";
-import linda6 from "../components/images/lindas6.jpeg";
-import nois from "../components/images/nois.jpeg";
-import { MyToast } from "../components/Alerts/swal-mixin";
+import {
+  ThemeProvider,
+  Typography,
+  createTheme,
+  Button,
+} from "@mui/material";
 import Swal from "sweetalert2";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+// Importando as imagens (ajuste se os nomes diferirem)
+import img1 from "../components/images/image1.jpg";
+import img2 from "../components/images/image2.jpg";
+import img3 from "../components/images/image3.jpg";
+import img4 from "../components/images/image4.jpg";
+import img5 from "../components/images/image5.jpg";
+import img6 from "../components/images/image6.jpg";
+import img7 from "../components/images/image7.jpg";
+import img8 from "../components/images/image8.jpg";
+import img9 from "../components/images/image9.jpg";
+import img10 from "../components/images/image10.jpg";
+import img11 from "../components/images/image11.jpg";
+import img12 from "../components/images/image12.jpg";
+import img13 from "../components/images/image13.jpg";
+import img14 from "../components/images/image14.jpg";
+import img15 from "../components/images/image15.jpg";
+import img16 from "../components/images/image16.jpg";
+import img17 from "../components/images/image17.jpg";
+import img18 from "../components/images/image18.jpg";
+import img19 from "../components/images/image19.jpg";
+import img20 from "../components/images/image20.jpg";
+import img21 from "../components/images/image21.jpg";
+import img22 from "../components/images/image22.jpg";
+import img23 from "../components/images/image23.jpg";
+import { Link } from "react-router-dom";
 
 function LendingPage() {
+  // Tema personalizado
   const theme = createTheme({
     palette: {
       primary: {
-        main: "#136935",
+        main: "#6A0DAD", // Roxo
       },
       secondary: {
-        main: "#FFFFFF",
+        main: "#D8BFD8", // Lilás
       },
     },
     typography: {
-      fontFamily: [
-        'Montserrat',
-        'sans-serif'
-      ].join(','),
+      fontFamily: ["Montserrat", "sans-serif"].join(","),
     },
   });
 
+  // Funções dos botões surpresa
   const handleClick = () => {
     Swal.fire({
-      title: "Feliz aniversário, minha princesa",
-      text: "Que mulher linda é essa?",
-      imageUrl: linda5,
-      imageWidth: '80%', // Defina uma largura máxima responsiva
-      imageHeight: 'auto', // Mantém a proporção original da imagem
-      imageAlt: "PERFEITA"
+      title: "Minha princesa perfeita 💜",
+      text: "Você é a melhor coisa da minha vida!",
+      imageUrl: img11,
+      imageWidth: "80%",
+      imageHeight: "auto",
+      imageAlt: "Isabela linda",
     });
   };
 
-  
   const handleClick2 = () => {
     Swal.fire({
-      title: "EU SOU AMIGO DESSAS BELDADES AI",
-      text: "Olha isso, meu deus",
-      imageUrl: linda6,
-      imageWidth: '80%', // Defina uma largura máxima responsiva
-      imageHeight: 'auto', // Mantém a proporção original da imagem
-      imageAlt: "PERFEITAS"
+      title: "O amor da minha vida 😍",
+      text: "Cada detalhe seu me faz me apaixoar mais por você!",
+      imageUrl: img4,
+      imageWidth: "80%",
+      imageHeight: "auto",
+      imageAlt: "Linda demais",
     });
   };
 
   const handleClick3 = () => {
     Swal.fire({
-      title: "Amo muito VCSS",
-      text: "Vocês são lindas demaissss, amo vcsss",
-      imageUrl: nois,
-      imageWidth: '80%', // Defina uma largura máxima responsiva
-      imageHeight: 'auto', // Mantém a proporção original da imagem
-      imageAlt: "PERFEITAS"
+      title: "Nós dois 💜",
+      text: "A melhor parte da minha vida é estar ao seu lado!",
+      imageUrl: img2,
+      imageWidth: "80%",
+      imageHeight: "auto",
+      imageAlt: "Casal perfeito",
     });
   };
 
+  // Array com todas as imagens para galeria
+  const galleryImages = [
+    img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12,
+    img13, img14, img15, img16, img17, img18, img19, img20, img21, img22, img23,
+  ];
 
   return (
     <ThemeProvider theme={theme}>
-      <div className="App" style={{ padding: "20px" }}>
-        {/* BODY */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "column",
-            width: "100%",
-          }}
-        >
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: "20px",
-              width: "100%",
-              maxWidth: "800px",
-              margin: "0 auto",
-            }}
+      {/* NAVBAR */}
+      <nav
+        className="navbar navbar-expand-lg navbar-dark"
+        style={{ backgroundColor: "#6A0DAD" }}
+      >
+        <div className="container">
+          <a className="navbar-brand fw-bold" href="#">
+            💜 Para Minha Princesa 💜
+          </a>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
           >
-            <div>
-              <Typography
-                color="black"
-                sx={{
-                  fontSize: "clamp(1.5rem, 5vw, 2.5rem)",
-                  fontWeight: "bold",
-                  textAlign: "center",
-                  marginBottom: "20px",
-                }}
-              >
-                Feliz aniversário, mulher perfeita, Maiara! ❤❤❤❤❤
-              </Typography>
-              <Typography
-                color="black"
-                sx={{
-                  fontSize: "clamp(0.8rem, 3vw, 1.2rem)",
-                  fontWeight: "bold",
-                  textAlign: "center",
-                }}
-              >
-               Maiara, és a mais sublime das criaturas, com uma beleza que embeleza até os anjos do céu. Maravilhe-se com a tua própria perfeição! ❤❤
-              </Typography>
-            </div>
-            <img
-              src={linda2}
-              loading="lazy"
-              alt=""
-              style={{
-                width: "100%",
-                maxWidth: "100%",
-                marginBottom: "20px",
-              }}
-            />
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav ms-auto">
+              <li className="nav-item"><a className="nav-link" href="#inicio">Início</a></li>
+              <li className="nav-item"><a className="nav-link" href="#fotos">Fotos</a></li>
+              <li className="nav-item"><a className="nav-link" href="#surpresa">Surpresa</a></li>
+              <li className="nav-item"><Link className="nav-link" to="/aniversario">Aniversário 🎂</Link></li>
+            </ul>
           </div>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: "20px",
-              width: "100%",
-              maxWidth: "800px",
-              margin: "0 auto",
-            }}
-          >
-            <img
-              src={linda3}
-              loading="lazy"
-              alt="LINDA"
-              style={{
-                width: "100%",
-                maxWidth: "100%",
-                marginBottom: "20px",
-              }}
-            />
-            <div>
-              <Typography
-                color="black"
-                sx={{
-                  fontSize: "clamp(1.5rem, 5vw, 2.5rem)",
-                  fontWeight: "bold",
-                  textAlign: "center",
-                }}
-              >
-                Contemple esta mulher perfeita! ❤❤❤
-              </Typography>
-              <Typography
-                color="black"
-                sx={{
-                  fontSize: "clamp(0.8rem, 3vw, 1.2rem)",
-                  fontWeight: "bold",
-                  textAlign: "center",
-                }}
-              >
-                Sua beleza transcende a simples descrição. És a epítome da elegância e da graça. Que a tua beleza seja celebrada sempre e para sempre. ❤
-              </Typography>
-            </div>
-          </div>
-          <Button variant="contained" color="primary" onClick={handleClick} style={{ marginTop: "20px" }}>
-            Clique aqui
-          </Button>
-          <Button variant="contained" color="primary" onClick={handleClick2} style={{ marginTop: "20px" }}>
-            Lindas
-          </Button>
-          <Button variant="contained" color="primary" onClick={handleClick3} style={{ marginTop: "20px" }}>
-            Nois
-          </Button>
         </div>
-      </div>
+      </nav>
+
+      {/* HERO */}
+      <header
+        id="inicio"
+        className="text-center text-white d-flex align-items-center justify-content-center"
+        style={{
+          background: "linear-gradient(135deg, #6A0DAD, #D8BFD8)",
+          minHeight: "90vh",
+        }}
+      >
+        <div>
+          <Typography
+            sx={{
+              fontSize: "clamp(2rem, 6vw, 3.5rem)",
+              fontWeight: "bold",
+              marginBottom: "20px",
+            }}
+          >
+            Para minha princesa Isabela 💜
+          </Typography>
+          <Typography
+            sx={{
+              fontSize: "clamp(1rem, 3vw, 1.5rem)",
+              fontWeight: "500",
+            }}
+          >
+            Você é o meu mundo, minha inspiração e minha felicidade.
+          </Typography>
+        </div>
+      </header>
+
+      {/* SOBRE NÓS */}
+      <section id="sobre" className="py-5 bg-light text-center">
+        <div className="container">
+          <Typography
+            color="primary"
+            sx={{
+              fontSize: "2.5rem",
+              fontWeight: "bold",
+              marginBottom: "20px",
+            }}
+          >
+            Nossa História 💜
+          </Typography>
+          <Typography sx={{ maxWidth: "800px", margin: "0 auto" }}>
+            Cada momento ao seu lado é um presente que a vida me deu.
+            Isabela, você transforma os dias comuns em algo mágico e faz meu coração bater mais forte a cada sorriso seu.
+          </Typography>
+        </div>
+      </section>
+
+      {/* GALERIA */}
+      <section id="fotos" className="py-5">
+        <div className="container">
+          <Typography
+            color="primary"
+            sx={{
+              fontSize: "2.5rem",
+              fontWeight: "bold",
+              textAlign: "center",
+              marginBottom: "40px",
+            }}
+          >
+            Nossa Galeria de Momentos ✨
+          </Typography>
+          <div className="row g-3">
+            {galleryImages.map((img, index) => (
+              <div key={index} className="col-6 col-md-4 col-lg-3">
+                <img
+                  src={img}
+                  alt={`Moment ${index + 1}`}
+                  className="img-fluid rounded shadow-sm responsive-img"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SURPRESA */}
+      <section
+        id="surpresa"
+        className="text-center py-5"
+        style={{ backgroundColor: "#f7f2fa" }}
+      >
+        <div className="container">
+          <Typography
+            color="primary"
+            sx={{ fontSize: "2.2rem", fontWeight: "bold", marginBottom: "30px" }}
+          >
+            Clique e veja a surpresa! 🎁
+          </Typography>
+          <div className="d-flex flex-wrap justify-content-center gap-3">
+            <Button variant="contained" color="primary" onClick={handleClick}>
+              Princesa 💜
+            </Button>
+            <Button variant="contained" color="primary" onClick={handleClick2}>
+              Linda 💜
+            </Button>
+            <Button variant="contained" color="primary" onClick={handleClick3}>
+              Nós 💜
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer
+        className="text-center text-white py-3"
+        style={{ backgroundColor: "#6A0DAD" }}
+      >
+        <Typography sx={{ fontSize: "1rem" }}>
+          Feito com muito 💜 para minha princesa Isabela
+        </Typography>
+      </footer>
     </ThemeProvider>
   );
 }

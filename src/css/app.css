@@ -1,0 +1,13 @@
+.responsive-img {
+  width: 100%;
+  max-width: 350px;   /* controla o limite máximo */
+  height: 250px;      /* altura fixa para padronizar */
+  object-fit: cover;  /* corta proporcionalmente */
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.responsive-img:hover {
+  transform: scale(1.05); /* zoom suave ao passar o mouse */
+}
