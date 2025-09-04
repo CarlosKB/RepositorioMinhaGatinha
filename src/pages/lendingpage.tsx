@@ -187,7 +187,7 @@ function LendingPage() {
               marginBottom: "20px",
             }}
           >
-            Para minha princesa Isabela 💜
+            Para minha princesa linda 💜
           </Typography>
           <Typography
             sx={{
@@ -195,11 +195,11 @@ function LendingPage() {
               fontWeight: "500",
             }}
           >
-            Você é o meu mundo, minha inspiração e minha felicidade.
+            Você é tudo pra mim, eu te amo demais.
           </Typography>
         </div>
       </header>
-      
+
       {/* CONTADOR / ANIVERSÁRIO */}
       <section
         id="contador"
@@ -268,7 +268,7 @@ function LendingPage() {
                 <Typography>segundos</Typography>
               </div>
             </div>
-            <Typography sx={{ fontSize: "1.2rem" }}>para o seu aniversário! 🎉</Typography>
+            <Typography sx={{ fontSize: "1.2rem" }}>para o aniversário da mulher mais linda do mundo! 🎉</Typography>
           </>
         ) : (
           <div className="d-flex flex-column align-items-center">
@@ -277,7 +277,7 @@ function LendingPage() {
               Feliz Aniversário, minha princesa! 💜🎂
             </Typography>
             <Typography sx={{ fontSize: "1.2rem" }}>
-              Que seu dia seja cheio de alegria, amor e momentos inesquecíveis!
+              Que seu dia seja incrível e que eu esteja em todos os seus próximos aniversários!
             </Typography>
           </div>
         )}
@@ -297,8 +297,8 @@ function LendingPage() {
             Nossa História 💜
           </Typography>
           <Typography sx={{ maxWidth: "800px", margin: "0 auto" }}>
-            Cada momento ao seu lado é um presente que a vida me deu.
-            Isabela, você transforma os dias comuns em algo mágico e faz meu coração bater mais forte a cada sorriso seu.
+            Cada momento ao seu lado é especial.
+            Minha gatinha linda, você transforma os dias comuns em algo mágico e faz meu coração bater mais forte toda vez que te vejo.
           </Typography>
         </div>
       </section>
@@ -315,16 +315,33 @@ function LendingPage() {
               marginBottom: "40px",
             }}
           >
-            Nossa Galeria de Momentos ✨
+            Nossa Galeria ✨
           </Typography>
           <div className="row g-3">
             {galleryImages.map((img, index) => (
-              <div key={index} className="col-6 col-md-4 col-lg-3">
-                <img
-                  src={img}
-                  alt={`Moment ${index + 1}`}
-                  className="img-fluid rounded shadow-sm responsive-img"
-                />
+              <div key={index} className="col-6 col-md-4 col-lg-3 d-flex justify-content-center">
+                <div
+                  style={{
+                    width: "250px",
+                    height: "250px",
+                    borderRadius: "20px",
+                    overflow: "hidden",
+                    boxShadow: "0 4px 15px rgba(0,0,0,0.3)",
+                    border: "3px solid #D8BFD8",
+                  }}
+                >
+                  <img
+                    src={img}
+                    alt={`Momento ${index + 1}`}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      transition: "transform 0.3s",
+                    }}
+                    className="hover-scale"
+                  />
+                </div>
               </div>
             ))}
           </div>
@@ -346,7 +363,7 @@ function LendingPage() {
           </Typography>
           <div className="d-flex flex-wrap justify-content-center gap-3">
             <Button variant="contained" color="primary" onClick={handleClick}>
-              Princesa 💜
+              Seu sorriso 💜
             </Button>
             <Button variant="contained" color="primary" onClick={handleClick2}>
               Linda 💜
@@ -364,7 +381,7 @@ function LendingPage() {
         style={{ backgroundColor: "#6A0DAD" }}
       >
         <Typography sx={{ fontSize: "1rem" }}>
-          Feito com muito 💜 para minha princesa Isabela
+          Feito com muito 💜amor💜 para minha princesa
         </Typography>
       </footer>
     </ThemeProvider>

@@ -11,3 +11,7 @@
 .responsive-img:hover {
   transform: scale(1.05); /* zoom suave ao passar o mouse */
 }
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
