@@ -33,6 +33,10 @@ import img20 from "../components/images/image20.jpg";
 import img21 from "../components/images/image21.jpg";
 import img22 from "../components/images/image22.jpg";
 import img23 from "../components/images/image23.jpg";
+import img24 from "../components/images/image24.jpg";
+import img25 from "../components/images/image25.jpg";
+import img26 from "../components/images/image26.jpg";
+import img27 from "../components/images/image27.jpg";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -114,9 +118,9 @@ function LendingPage() {
 
   const handleClick2 = () => {
     Swal.fire({
-      title: "O amor da minha vida 😍",
-      text: "Cada detalhe seu me faz me apaixoar mais por você!",
-      imageUrl: img4,
+      title: "Amei estar com você neste momento 😍",
+      text: "Nossa primeira viagem juntos 💜 Amo cada momento ao seu lado!",
+      imageUrl: img2,
       imageWidth: "80%",
       imageHeight: "auto",
       imageAlt: "Linda demais",
@@ -125,9 +129,9 @@ function LendingPage() {
 
   const handleClick3 = () => {
     Swal.fire({
-      title: "Nós dois 💜",
-      text: "A melhor parte da minha vida é estar ao seu lado!",
-      imageUrl: img2,
+      title: "Nós no parquinho do juninho 😎",
+      text: "A melhor parte da minha vida é estar com você… mesmo quando a gente ta girando naquele brinquedo maluco!",
+      imageUrl: img21,
       imageWidth: "80%",
       imageHeight: "auto",
       imageAlt: "Casal perfeito",
@@ -136,8 +140,9 @@ function LendingPage() {
 
   // Array com todas as imagens para galeria
   const galleryImages = [
-    img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12,
-    img13, img14, img15, img16, img17, img18, img19, img20, img21, img22, img23,
+    img1, img2, img3, img4, img5, img7, img8, img9, img10, img12, img13, img14, 
+    img15, img16, img17, img18, img19, img20, img21, img22, img23, img25, img26,
+    img27
   ];
 
   return (
@@ -363,10 +368,10 @@ function LendingPage() {
           </Typography>
           <div className="d-flex flex-wrap justify-content-center gap-3">
             <Button variant="contained" color="primary" onClick={handleClick}>
-              Seu sorriso 💜
+              Minha gatinha 💜
             </Button>
             <Button variant="contained" color="primary" onClick={handleClick2}>
-              Linda 💜
+              Wicked 💜
             </Button>
             <Button variant="contained" color="primary" onClick={handleClick3}>
               Nós 💜
