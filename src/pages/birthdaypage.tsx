@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import { ThemeProvider, Typography, createTheme, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import confetti from "canvas-confetti";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js"; // precisa do JS do bootstrap
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
-// Importe suas imagens (até 23)
 import img1 from "../components/images/image1.jpg";
 import img2 from "../components/images/image2.jpg";
 import img3 from "../components/images/image3.jpg";
@@ -14,8 +14,8 @@ import img5 from "../components/images/image5.jpg";
 function BirthdayPage() {
   const theme = createTheme({
     palette: {
-      primary: { main: "#6A0DAD" }, // Roxo
-      secondary: { main: "#D8BFD8" }, // Lilás
+      primary: { main: "#6A0DAD" },
+      secondary: { main: "#D8BFD8" },
     },
     typography: { fontFamily: ["Montserrat", "sans-serif"].join(",") },
   });
@@ -23,8 +23,62 @@ function BirthdayPage() {
   const navigate = useNavigate();
   const carouselRef = useRef(null);
 
-  // coloque todas as suas imagens neste array
   const images = [img1, img2, img3, img4, img5];
+
+  const launchConfetti = () => {
+    // várias explosões rápidas
+    const duration = 2000; // 0.8s
+    const animationEnd = Date.now() + duration;
+    const defaults = { startVelocity: 40, spread: 360, ticks: 60, zIndex: 9999 };
+
+    const interval: any = setInterval(() => {
+      const timeLeft = animationEnd - Date.now();
+
+      if (timeLeft <= 0) {
+        return clearInterval(interval);
+      }
+
+      const particleCount = 80 * (timeLeft / duration); // vai diminuindo
+      confetti({
+        ...defaults,
+        particleCount,
+        origin: {
+          x: Math.random(),
+          y: Math.random() - 0.2, // explode mais para cima
+        },
+      });
+    }, 100);
+  };
+
+  // Balões 🎈 (simulados como partículas grandes que sobem devagar)
+  const launchBalloons = () => {
+    for (let i = 0; i < 6; i++) {
+      confetti({
+        particleCount: 10,
+        startVelocity: 100,
+        ticks: 50,
+        gravity: -0.2, // sobe em vez de cair
+        origin: { x: Math.random(), y: 1.2 },
+        shapes: ["star"],
+        scalar: 2, // tamanho grande
+        colors: ["#ff99ff"], // cores de balões
+      });
+    }
+  };
+
+  useEffect(() => {
+    // dispara confete + balões na entrada
+    launchConfetti();
+    launchBalloons();
+
+    // repete a cada 10s
+    const interval = setInterval(() => {
+      launchConfetti();
+      launchBalloons();
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>
@@ -73,13 +127,9 @@ function BirthdayPage() {
             className="carousel slide shadow-lg rounded overflow-hidden"
             ref={carouselRef}
           >
-            {/* Slides */}
             <div className="carousel-inner">
               {images.map((src, i) => (
-                <div
-                  className={`carousel-item ${i === 0 ? "active" : ""}`}
-                  key={i}
-                >
+                <div className={`carousel-item ${i === 0 ? "active" : ""}`} key={i}>
                   <div
                     style={{
                       display: "flex",
@@ -99,7 +149,7 @@ function BirthdayPage() {
                         width: "auto",
                         height: "auto",
                         borderRadius: "15px",
-                        objectFit: "contain", // mantém toda a imagem visível
+                        objectFit: "contain",
                       }}
                     />
                   </div>
@@ -107,17 +157,13 @@ function BirthdayPage() {
               ))}
             </div>
 
-            {/* Controles */}
             <button
               className="carousel-control-prev"
               type="button"
               data-bs-target="#carouselAniversario"
               data-bs-slide="prev"
             >
-              <span
-                className="carousel-control-prev-icon bg-dark rounded-circle p-3"
-                aria-hidden="true"
-              ></span>
+              <span className="carousel-control-prev-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
               <span className="visually-hidden">Anterior</span>
             </button>
             <button
@@ -126,10 +172,7 @@ function BirthdayPage() {
               data-bs-target="#carouselAniversario"
               data-bs-slide="next"
             >
-              <span
-                className="carousel-control-next-icon bg-dark rounded-circle p-3"
-                aria-hidden="true"
-              ></span>
+              <span className="carousel-control-next-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
               <span className="visually-hidden">Próximo</span>
             </button>
           </div>
