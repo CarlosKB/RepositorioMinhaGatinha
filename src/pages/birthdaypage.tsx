@@ -192,6 +192,7 @@ function BirthdayPage() {
             Quero estar com você, meu amor, em todos os seus momentos, sejam eles tristes ou felizes. Você faz meus dias melhores.
             Eu amo amar você, amo estar com você e amo fazer tudo por você. Eu te amo a cada detalhe seu e tenho muito orgulho de você, minha princesa.
             Quero estar com você sempre e para sempre. Te amo, meu amor.
+            
           </Typography>
         </div>
       </section>
